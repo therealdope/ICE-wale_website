@@ -56,13 +56,51 @@ Follow these steps to set up the project locally:
 ---
 
 ## Directory Structure
+```
+Directory structure:
+└── therealdope-ICE-wale_website/
+    ├── README.md
+    ├── manage.py
+    ├── base/
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── models.py
+    │   ├── tests.py
+    │   ├── urls.py
+    │   ├── views.py
+    │   └── migrations/
+    │       ├── 0001_initial.py
+    │       └── __init__.py
+    ├── myapp/
+    │   ├── __init__.py
+    │   ├── asgi.py
+    │   ├── settings.py
+    │   ├── urls.py
+    │   └── wsgi.py
+    ├── static/
+    │   ├── d.jpg.avif
+    │   └── logo3.avif
+    └── tampletes/
+        ├── bar.html
+        ├── base.html
+        ├── cake.html
+        ├── cone.html
+        ├── home.html
+        ├── list.html
+        └── sundae.html
+```
+---
 
+## Contributions are welcome! To contribute:
+- Fork the repository.
+- Create a new branch for your feature or bug fix.
+- Submit a pull request with a detailed description.
 
+---
 
+## License
 
-
-
-
-
+This project is licensed under the MIT License.
 
 
