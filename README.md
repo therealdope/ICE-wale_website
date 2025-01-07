@@ -31,8 +31,8 @@ Follow these steps to set up the project locally:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/your-repository.git
-   cd your-repository
+   git clone https://github.com/therealdope/ICE-wale_website
+   cd ICE-wale_website
 
 2. **set environment**
    `python -m venv env`
