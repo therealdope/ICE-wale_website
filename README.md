@@ -35,22 +35,26 @@ Follow these steps to set up the project locally:
    cd ICE-wale_website
 
 2. **set environment**
+   
    `python -m venv env`
    
    `source env/bin/activate`   #On Windows:`env\Scripts\activate`
    
-3. **requirnment**
+4. **requirnment**
+   
    `pip install django`
 
-4. **setup database**
+6. **setup database**
+
    `python manage.py makemigrations`
    
    `python manage.py migrate`
 
-5. **Run server**
+7. **Run server**
+
    `python manage.py runserver`
 
-6. Open your browser and go to `http://127.0.0.1:8000/`
+9. Open your browser and go to `http://127.0.0.1:8000/`
 
 
 ---
