@@ -50,11 +50,17 @@ Follow these steps to set up the project locally:
    
    `python manage.py migrate`
 
-7. **Run server**
+7. **Add admin to login**
+   
+   `python manage.py createsuperuser` and provide necessary details.
+
+9. **Run server**
 
    `python manage.py runserver`
 
-9. Open your browser and go to `http://127.0.0.1:8000/`
+10. Open your browser and go to `http://127.0.0.1:8000/`
+
+11. **To add images**: go to `http://127.0.0.1:8000/admin` and add url of images and you are good to go...
 
 
 ---
