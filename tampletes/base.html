@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Sofadi+One&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>ICE-Wale</title>
+
+    <style>
+        body {
+            background-color: rgb(245, 245, 231);
+        }
+        
+        .dropdown-menu .dropdown-item {
+            background-color: transparent !important;
+            text-decoration: none !important;
+        }
+        
+        .dropdown-menu .dropdown-item:hover {
+            background-color: transparent !important;
+            text-decoration: none !important;
+        }
+        
+        #bar,
+        #cone,
+        #sundae,
+        #cake {
+            position: relative;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            margin: 10px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        /* Background images for each menu item */
+        
+        #bar {
+            background-image: url('../static/bar.jpg');
+        }
+        
+        #cone {
+            background-image: url('../static/cone.jpg');
+        }
+        
+        #sundae {
+            background-image: url('../static/sundae.jpg');
+        }
+        
+        #cake {
+            background-image: url('../static/cake.jpeg');
+        }
+        /* Add dark overlay for better text readability */
+        
+        #bar::before,
+        #cone::before,
+        #sundae::before,
+        #cake::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Dark overlay */
+            border-radius: 10px;
+            z-index: 1;
+        }
+        /* Style for the text inside the dropdown */
+        
+        #bar a,
+        #cone a,
+        #sundae a,
+        #cake a {
+            position: relative;
+            z-index: 2;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        /* Hover effect */
+        
+        #bar:hover,
+        #cone:hover,
+        #sundae:hover,
+        #cake:hover {
+            transform: scale(1.05);
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        /* Base style for the logo */
+        /* Base style for the logo */
+        /* Base style for the logo */
+        
+        #logo {
+            background-image: url('../static/logo3.avif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 10px;
+            /* Slightly rounded corners for a rectangular look */
+            color: white;
+            position: relative;
+            display: inline-flex;
+            /* Use inline-flex to align text */
+            align-items: center;
+            /* Center text vertically */
+            justify-content: center;
+            /* Center text horizontally */
+            width: 120px;
+            /* Adjust width as needed */
+            height: 50px;
+            /* Adjust height as needed */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Dark overlay */
+            background-blend-mode: darken;
+            /* Blend mode */
+            transition: transform 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+            /* Smooth transitions */
+        }
+        /* Hover effect for the logo */
+        
+        #logo:hover {
+            transform: scale(1.05);
+            background-color: rgba(0, 0, 0, 0);
+            /* Remove overlay on hover */
+            background-blend-mode: normal;
+            /* Blend mode */
+        }
+        /* Text styling within the logo */
+        
+        #logo b {
+            z-index: 2;
+            /* Ensure text stays above the background */
+            font-size: 1rem;
+            /* Adjust text size as needed */
+            text-align: center;
+            /* Center text horizontally */
+            transition: color 0.3s ease;
+            /* Smooth transition for text color */
+        }
+        /* Hide text on hover */
+        
+        #logo:hover b {
+            color: transparent;
+            /* Hide text on hover */
+        }
+        
+        .fas.fa-heart {
+            font-size: 25px;
+            margin-right: 5px;
+            color: white;
+        }
+        
+        .fas.fa-heart:hover {
+            color: red;
+        }
+        
+        section {
+            padding: 60px 0;
+            min-height: 100vh;
+        }
+        
+        a,
+        a:hover,
+        a:focus,
+        a:active {
+            text-decoration: none;
+            outline: none;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .main-footer {
+            position: relative;
+            background: #1e2129;
+        }
+        
+        .footer-content {
+            position: relative;
+            padding: 85px 0px 80px 0px;
+        }
+        
+        .footer-content:before {
+            position: absolute;
+            content: '';
+            background: url(https://i.ibb.co/jyRLrBZ/world-map.png);
+            width: 744px;
+            height: 365px;
+            top: 50px;
+            right: 0px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+        
+        .footer-widget {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-content .logo-widget {
+            position: relative;
+            margin-top: -5px;
+        }
+        
+        .footer-content .logo-widget .footer-social li {
+            position: relative;
+            display: inline-block;
+            margin-right: 9px;
+        }
+        
+        .footer-content .logo-widget .footer-social li:last-child {
+            margin-right: 0px;
+        }
+        
+        .footer-content .logo-widget .footer-social li a {
+            position: relative;
+            display: inline-block;
+            width: 42px;
+            height: 42px;
+            line-height: 42px;
+            background: #2e3138;
+            color: #9ea0a9;
+            text-align: center;
+            border-radius: 50%;
+        }
+        
+        .footer-content .logo-widget .footer-social li a:hover {
+            color: #ffffff;
+            background: #ff5e14;
+            translate: 0px -5px;
+        }
+        
+        .footer-content .logo-widget .logo-box {
+            margin-bottom: 25px;
+        }
+        
+        .footer-content .logo-widget .text p {
+            color: #9ea0a9;
+            margin-bottom: 32px;
+        }
+        
+        .footer-content .footer-title {
+            position: relative;
+            font-size: 24px;
+            line-height: 35px;
+            font-family: 'Playfair Display', serif;
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 27px;
+        }
+        
+        .footer-content .service-widget .list li {
+            display: block;
+            margin-bottom: 12px;
+        }
+        
+        .footer-content .service-widget .list li a {
+            position: relative;
+            display: inline-block;
+            color: #9ea0a9;
+        }
+        
+        .footer-content .service-widget .list li a:hover {
+            color: #ff5e14;
+        }
+        
+        .footer-content .contact-widget p {
+            color: #9ea0a9;
+            margin-bottom: 15px;
+        }
+        
+        .footer-content .contact-widget {
+            margin-left: 90px;
+        }
+        
+        .footer-content .contact-widget .footer-title {
+            margin-bottom: 29px;
+        }
+        /** footer-bottom **/
+        
+        .footer-bottom {
+            position: relative;
+            background: #13151a;
+            padding: 25px 0px 22px 0px;
+        }
+        
+        .footer-bottom .copyright,
+        .footer-bottom .copyright a,
+        .footer-bottom .footer-nav li a {
+            position: relative;
+            color: #9ea0a9;
+        }
+        
+        .footer-bottom .copyright a:hover,
+        .footer-bottom .footer-nav li a:hover {
+            color: #ff5e14;
+        }
+        
+        .footer-bottom .footer-nav {
+            position: relative;
+            text-align: right;
+        }
+        
+        .footer-bottom .footer-nav li {
+            position: relative;
+            display: inline-block;
+            margin-left: 29px;
+        }
+        
+        .footer-bottom .footer-nav li:first-child {
+            margin-left: 0px;
+        }
+        
+        .footer-bottom .footer-nav li:before {
+            position: absolute;
+            content: '';
+            background: #9ea0a9;
+            width: 1px;
+            height: 14px;
+            top: 7px;
+            left: -18px;
+        }
+        
+        .footer-bottom .footer-nav li:first-child:before {
+            display: none;
+        }
+        
+        .logo-box img {
+            max-width: 220px;
+        }
+    </style>
+    {% block style %} {% endblock style %}
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><b id="logo" class="border border-dark p-2">ICE-wale</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active fs-5" aria-current="page" href="/"><b>Home</b></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <b>{{Choose}}</b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li id="bar"><a class="dropdown-item" href="/bar">BAR</a>
+                                <hr>
+                            </li>
+                            <li id="cone"><a class="dropdown-item" href="/cone">CONE</a>
+                                <hr>
+                            </li>
+                            <li id="sundae"><a class="dropdown-item" href="/sundae">SUNDAE</a>
+                                <hr>
+                            </li>
+                            <li id="cake"><a class="dropdown-item" href="/cake">CAKE</a></li>
+
+                        </ul>
+                    </li>
+
+                </div>
+            </div>
+            <form class="d-flex" role="search">
+                <a class="nav-link m-16" href="/list"><i class="fas fa-heart"></i></a>
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    {% block body %}{% endblock body %}
+
+    <div class="myfooter">
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+                            <div class="logo-widget footer-widget">
+                                <figure class="logo-box">
+                                    <b id="logo" class="border border-dark p-3">ICE-wale</b>
+                                </figure>
+                                <div class="text">
+                                    <p>At ICE-wale, we believe that ice cream is more than just a dessert—it's a celebration of joy, nostalgia, and sweet moments shared with loved ones. Founded with a passion for creating the finest, most indulgent ice creams,
+                                        we handcraft each flavor with the best ingredients, ensuring every scoop is packed with freshness and creativity.</p>
+                                </div>
+                                <ul class="footer-social">
+                                    <li><a href="/"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="/"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="/"><i class="fab fa-vimeo-v"></i></a></li>
+                                    <li><a href="/"><i class="fab fa-google-plus-g"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 offset-lg-2 footer-column">
+                            <div class="service-widget footer-widget">
+                                <div class="footer-title">Services</div>
+                                <ul class="list">
+                                    <li><a href="/">Ice Cream Catering</a></li>
+                                    <li><a href="/">Custom Flavors</a></li>
+                                    <li><a href="/">Home Delivery</a></li>
+                                    <li><a href="/">Seasonal Specials</a></li>
+                                    <li><a href="/">Workshops and Classes</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-widget">
+                            <div class="contact-widget footer-widget">
+                                <div class="footer-title">Contacts</div>
+                                <div class="text">
+                                    <p>We'd love to hear from you! Whether you have questions, feedback, or just want to talk about ice cream, feel free to reach out.</p>
+                                    <p><i class="fas fa-phone p-2"></i>: +1-234-567-8901</p>
+                                    <p><i class="fas fa-envelope p-2"></i>: info@ice-wale.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 column">
+                        <div class="copyright"><a href="#">therealdope</a> &copy; 2024 All Right Reserved</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 column">
+                        <ul class="footer-nav">
+                            <li><a href="/">Terms of Service</a></li>
+                            <li><a href="/">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+# Python compiled files
+*.pyc
+__pycache__/
+
+# Django specific files
+db.sqlite3
+*.log
+
+# Environment and secrets
+.env
+
+# Static and media files
+/media/
+/staticfiles/
+
+# Editor and OS-specific files
+.vscode/
+.idea/
+*.DS_Store
+*.bak

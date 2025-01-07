@@ -1,0 +1,123 @@
+{% extends "base.html" %} {% block style %}
+<style>
+    #myheader {
+        margin-left: 30px;
+        margin-top: 10px;
+        margin-bottom: -10px;
+        font-family: monospace;
+    }
+    
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: flex-start;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .card {
+        position: relative;
+        width: 310px;
+        margin-left: 8px;
+        overflow: hidden;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-img:hover {
+        transform: scale(1.1);
+    }
+    
+    .card-img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .card-img-container {
+        position: relative;
+    }
+    
+    .card-title {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: white;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px;
+        border-radius: 5px;
+    }
+    
+    .heart-button {
+        font-size: 22px;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.7);
+        border: none;
+        border-radius: 100%;
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        color: grey;
+    }
+    
+    .heart-button.active {
+        color: red;
+    }
+    
+    .heart-button:hover {
+        background-color: white;
+        color: red;
+    }
+</style>
+{% endblock style %} {% block body %}
+<h1 id="myheader">FAVORITES</h1>
+<div class="container-fluid mt-4">
+    <div class="card-container">
+        {% for image in list %}
+        <div class="card">
+            <div class="card-img-container">
+                <img src="{{ image.image_url }}" class="card-img" alt="{{ image.id }}">
+                <button class="heart-button {% if image.list %}active{% endif %}" data-image-id="{{ image.id }}" data-list-status="{{ image.list }}">
+                    <i class="fa fa-heart"></i>
+                </button>
+            </div>
+        </div>
+        {% empty %}
+        <p>No lists available.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.heart-button').on('click', function(event) {
+            event.preventDefault();
+
+            var button = $(this);
+            var imageId = button.data('image-id');
+            var listStatus = button.data('list-status');
+
+            $.ajax({
+                url: '/toggle-list/' + imageId + '/',
+                type: 'POST',
+                data: {
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function(response) {
+                    // Toggle the active class to make the heart red or grey
+                    button.toggleClass('active');
+                    // Toggle the list status
+                    button.data('list-status', !listStatus);
+                }
+            });
+        });
+    });
+</script>
+{% endblock body %}
