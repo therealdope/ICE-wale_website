@@ -1,1 +1,1 @@
-web: gunicorn ICE-wale_website.wsgi --log-file -
+web: gunicorn myapp.wsgi
