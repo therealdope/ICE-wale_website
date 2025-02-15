@@ -8,13 +8,26 @@ db.sqlite3
 
 # Environment and secrets
 .env
+/env/
+*.secret  # Any secret files
 
 # Static and media files
 /media/
+/static/
 /staticfiles/
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Virtual environment
+venv/
+env/
 
 # Editor and OS-specific files
 .vscode/
 .idea/
 *.DS_Store
 *.bak
+*.swp  # Vim swap files
