@@ -11,16 +11,6 @@ db.sqlite3
 /env/
 *.secret  # Any secret files
 
-# Static and media files
-/media/
-/static/
-/staticfiles/
-*.svg
-*.png
-*.jpg
-*.jpeg
-*.gif
-
 # Virtual environment
 venv/
 env/
